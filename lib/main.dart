@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:vector/shourya';
 
 import 'view_models/home_view_model.dart';
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const Scaffold(body: Center(child: Text('Vector'))),
+        home: WelcomePage(),
       ),
     );
   }
