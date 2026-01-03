@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'view_models/home_view_model.dart';
 import 'view_models/onboarding_view_model.dart';
 import 'core/utils/firebase_test_util.dart';
+import 'views/welcome.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const Scaffold(body: Center(child: Text('Vector'))),
+        home: const WelcomePage(),
       ),
     );
   }
