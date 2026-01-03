@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newapp/forget_password/forget_password_view.dart';
 import 'package:newapp/new_password/new_password_view.dart';
 import 'package:pinput/pinput.dart';
 import 'verification_page_viewmodel.dart';
@@ -35,7 +36,29 @@ class _VerificationPageState extends State<VerificationPage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(height: 80), // space from top
+              Align(
+                alignment: Alignment.centerLeft,
+                child:InkWell(
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ForgetPasswordPage(),
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    '<Back',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 17.33,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 120), // space from top
 
               // 🔹 Top Image
               Image.asset(
@@ -66,6 +89,7 @@ class _VerificationPageState extends State<VerificationPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
                   children: [
+
                     const Text(
                       'Verification code sent on',
                       textAlign: TextAlign.center,
@@ -101,7 +125,7 @@ class _VerificationPageState extends State<VerificationPage> {
                         fontFamily: 'Poppins',
                       ),
                     ),
-                    const SizedBox(height: 40),
+                    const SizedBox(height: 90),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xFF693298),

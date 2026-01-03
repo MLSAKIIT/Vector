@@ -11,14 +11,14 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   final LoginViewModel viewModel = LoginViewModel();
-
+  bool rememberMe = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF0B0B0F),
       body: SafeArea(
         child: Center( // 🔹 centers everything vertically + horizontally
-          child: SingleChildScrollView(
+
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center, // 🔹 vertical center
               crossAxisAlignment: CrossAxisAlignment.center, // 🔹 horizontal center
@@ -36,7 +36,7 @@ class _LoginViewState extends State<LoginView> {
                   ),
                 ),
 
-                const SizedBox(height: 60),
+                const SizedBox(height: 55),
 
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -58,7 +58,7 @@ class _LoginViewState extends State<LoginView> {
                       const SizedBox(height: 70),
 
                       const Align(
-                        alignment: Alignment.centerLeft, // labels stay readable
+                        alignment: Alignment.centerLeft,
                         child: Text(
                           'Username',
                           style: TextStyle(
@@ -72,7 +72,7 @@ class _LoginViewState extends State<LoginView> {
 
                       TextField(
                         style: const TextStyle(
-                          fontSize: 30,
+                          fontSize: 20,
                           color: Colors.white,
                         ),
                         decoration: InputDecoration(
@@ -139,6 +139,61 @@ class _LoginViewState extends State<LoginView> {
                           viewModel.updatePassword(value);
                         },
                       ),
+                      const SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                rememberMe = !rememberMe;
+                              });
+                            },
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                  rememberMe
+                                      ? 'assets/images/checkbox.png'
+                                      : 'assets/images/filled_checkbox.png',
+                                  width: 20,
+                                  height: 20,
+                                ),
+                                const SizedBox(width: 8),
+                                const Text(
+                                  'Remember me',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontFamily: 'Poppins',
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const ForgetPasswordPage(),
+                                ),
+                              );
+                            },
+                            child: const Text(
+                              'Forgot Password ?',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+
+
 
                       const SizedBox(height: 40),
 
@@ -168,12 +223,33 @@ class _LoginViewState extends State<LoginView> {
                           ),
                         ),
                       ),
+                      const SizedBox(height: 20),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ForgetPasswordPage(),
+                        ),
+                      );
+                    },
+                    child: const Text(
+                      "Don't have an account ? Sign Up !",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+
                     ],
                   ),
                 ),
               ],
             ),
-          ),
+
         ),
       ),
     );

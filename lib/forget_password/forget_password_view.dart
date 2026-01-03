@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newapp/login/login_view/login_view.dart';
 import 'package:newapp/verification_page/verification_page_view.dart';
 import 'forget_password_viewmodel.dart';
 
@@ -20,7 +21,29 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(height: 80),
+            Align(
+            alignment: Alignment.centerLeft,
+            child:InkWell(
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LoginView(),
+                  ),
+                );
+              },
+              child: const Text(
+                '<Back',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 17.33,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+            ),
+              const SizedBox(height: 110),
               Image.asset(
                 'assets/images/forget_password_page.png',
                 height: 144,
@@ -85,7 +108,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                       ),
                       onChanged: viewModel.updateEmail,
                     ),
-                    const SizedBox(height: 75),
+                    const SizedBox(height: 100),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xFF693298),
