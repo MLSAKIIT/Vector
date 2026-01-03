@@ -6,7 +6,11 @@ plugins {
 }
 
 android {
+<<<<<<< HEAD
     namespace = "com.example.newapp"
+=======
+    namespace = "com.example.vector"
+>>>>>>> upstream/main
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -21,7 +25,11 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+<<<<<<< HEAD
         applicationId = "com.example.newapp"
+=======
+        applicationId = "com.example.vector"
+>>>>>>> upstream/main
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
@@ -42,3 +50,12 @@ android {
 flutter {
     source = "../.."
 }
+<<<<<<< HEAD
+=======
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+>>>>>>> upstream/main
