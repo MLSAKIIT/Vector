@@ -1,36 +1,55 @@
 import 'package:flutter/material.dart';
-import 'package:newapp/verification_page/verification_page_view.dart';
-import 'forget_password_viewmodel.dart';
+import 'package:newapp/new_password/new_password_view.dart';
+import 'package:pinput/pinput.dart';
+import 'verification_page_viewmodel.dart';
 
-class ForgetPasswordPage extends StatefulWidget {
-  const ForgetPasswordPage({super.key});
+class VerificationPage extends StatefulWidget {
+  const VerificationPage({super.key});
 
   @override
-  State<ForgetPasswordPage> createState() => _ForgetPasswordPageState();
+  State<VerificationPage> createState() => _VerificationPageState();
 }
 
-class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
-  final ForgetPasswordViewModel viewModel = ForgetPasswordViewModel();
-
+class _VerificationPageState extends State<VerificationPage> {
+  final VerificationViewModel viewModel = VerificationViewModel();
   @override
   Widget build(BuildContext context) {
+    final defaultPinTheme = PinTheme(
+      width: 35,
+      height: 45,
+      textStyle: const TextStyle(
+        fontSize: 32,
+        color: Colors.white,
+        fontWeight: FontWeight.w400,
+        fontFamily: 'Poppins',
+      ),
+      decoration: BoxDecoration(
+        color: const Color(0xFF2A2438),
+        borderRadius: BorderRadius.circular(12),
+      ),
+    );
+
     return Scaffold(
       backgroundColor: const Color(0xFF0B0B0F),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(height: 80),
+              const SizedBox(height: 80), // space from top
+
+              // 🔹 Top Image
               Image.asset(
-                'assets/images/forget_password_page.png',
+                'assets/images/verification_page.png',
                 height: 144,
                 width:155,
               ),
-              const SizedBox(height: 40),
-              // 🔹 Title
+
+              const SizedBox(height: 40), // space between image and text
+
+              // Title
               const Center(
                 child: Text(
-                  'Forget Password?',
+                  'Verify email address',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 24,
@@ -42,14 +61,13 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
 
               const SizedBox(height: 40),
 
-              // 🔹 Content with padding
+              // Description + Pinput
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: Column(
-
                   children: [
                     const Text(
-                      'Enter your email to receive a confirmation code to set a new password',
+                      'Verification code sent on',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white,
@@ -61,31 +79,29 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
 
                     const SizedBox(height: 40),
 
-                    TextField(
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                      ),
-                      decoration: InputDecoration(
-                        hintText: 'user@name.com',
-                        hintStyle: const TextStyle(
-                          color: Color(0xFFAAA7AF),
-                          fontSize: 15,
-                          fontFamily: 'Poppins',
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        filled: true,
-                        fillColor: const Color(0xFF2A2438),
-                        contentPadding: const EdgeInsets.symmetric(
-                          vertical: 20,
-                          horizontal: 20,
-                        ),
-                      ),
-                      onChanged: viewModel.updateEmail,
+                    // Pinput to store code
+                    Pinput(
+                      length: 4,
+                      defaultPinTheme: defaultPinTheme,
+                      onChanged: (value) {
+                        // Store the entered code in ViewModel
+                        viewModel.setCode(value);
+
+                      },
                     ),
-                    const SizedBox(height: 75),
+                    const SizedBox(height: 40),
+                    Text(
+                      'Resend Email? ',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        decoration: TextDecoration.underline,
+                        decorationColor: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Poppins',
+                      ),
+                    ),
+                    const SizedBox(height: 40),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xFF693298),
@@ -98,12 +114,12 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const VerificationPage(),
+                            builder: (context) => const NewPasswordPage(),
                           ),
                         );
                       },
                       child: const Text(
-                        'Confirm',
+                        'verify',
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.white,
@@ -112,6 +128,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                         ),
                       ),
                     ),
+
 
                   ],
                 ),
