@@ -1,0 +1,257 @@
+import 'package:flutter/material.dart';
+import '../Models/forget_password_model.dart';
+import '../view_models/login_view_model.dart';
+
+class LoginView extends StatefulWidget {
+  const LoginView({super.key});
+
+  @override
+  State<LoginView> createState() => _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> {
+  final LoginViewModel viewModel = LoginViewModel();
+  bool rememberMe = true;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFF0B0B0F),
+      body: SafeArea(
+        child: Center( // 🔹 centers everything vertically + horizontally
+
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center, // 🔹 vertical center
+            crossAxisAlignment: CrossAxisAlignment.center, // 🔹 horizontal center
+            children: [
+              const SizedBox(height: 50),
+
+              const Text(
+                'Welcome Back!',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 29,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'Poppins',
+                ),
+              ),
+
+              const SizedBox(height: 55),
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center, // 🔹 center inside
+                  children: [
+
+                    const Text(
+                      '"Discipline is the bridge between goals and accomplishment" - Jim Rohn',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'Poppins',
+                      ),
+                    ),
+
+                    const SizedBox(height: 70),
+
+                    const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Username',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'Poppins',
+                          color: Color(0xFFF5F5F5),
+                        ),
+                      ),
+                    ),
+                    //username input
+                    TextField(
+                      style: const TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                      decoration: InputDecoration(
+                        hintText: 'username',
+                        hintStyle: const TextStyle(
+                          fontSize: 15,
+                          fontFamily: 'Poppins',
+                          color: Color(0xFFAAA7AF),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        filled: true,
+                        fillColor: const Color(0xFF2A2438),
+                        contentPadding: const EdgeInsets.symmetric(
+                          vertical: 20,
+                          horizontal: 20,
+                        ),
+                      ),
+                      onChanged: (value) {
+                        viewModel.updateUsername(value);
+                      },
+                    ),
+
+                    const SizedBox(height: 20),
+
+                    const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Password',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'Poppins',
+                          color: Color(0xFFF5F5F5),
+                        ),
+                      ),
+                    ),
+
+                    TextField(
+                      obscureText: true,
+                      style: const TextStyle(
+                        fontSize: 30,
+                        color: Colors.white,
+                      ),
+                      decoration: InputDecoration(
+                        hintText: 'password',
+                        hintStyle: const TextStyle(
+                          fontSize: 15,
+                          fontFamily: 'Poppins',
+                          color: Color(0xFFAAA7AF),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        filled: true,
+                        fillColor: const Color(0xFF2A2438),
+                        contentPadding: const EdgeInsets.symmetric(
+                          vertical: 20,
+                          horizontal: 20,
+                        ),
+                      ),
+                      onChanged: (value) {
+                        viewModel.updatePassword(value);
+                      },
+                    ),
+                    const SizedBox(height: 15),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            setState(() {
+                              rememberMe = !rememberMe;
+                            });
+                          },
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                rememberMe
+                                    ? 'assets/images/checkbox.png'
+                                    : 'assets/images/filled_checkbox.png',
+                                width: 20,
+                                height: 20,
+                              ),
+                              const SizedBox(width: 8),
+                              const Text(
+                                'Remember me',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ForgetPasswordPage(),
+                              ),
+                            );
+                          },
+                          child: const Text(
+                            'Forgot Password ?',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+
+
+
+                    const SizedBox(height: 40),
+
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF693298),
+                        fixedSize: const Size(244, 63),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ForgetPasswordPage(),
+                          ),
+                        );
+                      },
+                      child: const Text(
+                        'Log-in',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ForgetPasswordPage(),
+                          ),
+                        );
+                      },
+                      child: const Text(
+                        "Don't have an account ? Sign Up !",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+
+                  ],
+                ),
+              ),
+            ],
+          ),
+
+        ),
+      ),
+    );
+  }
+}
