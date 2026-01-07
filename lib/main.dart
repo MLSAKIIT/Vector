@@ -30,19 +30,27 @@
 import 'package:flutter/material.dart';
 import 'views/welcome_view.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'view_models/auth_view_model.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const VectorApp());
 }
-
 class VectorApp extends StatelessWidget {
   const VectorApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: WelcomeView(),
-    );
+ return MultiProvider(
+  providers: [
+    ChangeNotifierProvider(create: (_) => AuthViewModel()),
+  ],
+  child: const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: WelcomeView(),
+  ),
+);
   }
 }

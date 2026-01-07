@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "835298460246",
+    "firebase_url": "https://vector-7729b-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "vector-7729b",
+    "storage_bucket": "vector-7729b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835298460246:android:6d4a4f9da1b2a5a69ab1f7",
+        "android_client_info": {
+          "package_name": "com.example.vector"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2414zGiQceTrFLSkyuympsmP8Qp2FrOs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

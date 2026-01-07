@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../view_models/auth_view_model.dart';
 
 class RegisterView extends StatelessWidget {
-  const RegisterView({super.key});
+  RegisterView({super.key});
+
+  // Controllers
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final authVM = context.watch<AuthViewModel>();
+
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: Container(
@@ -26,9 +35,7 @@ class RegisterView extends StatelessWidget {
               return SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minHeight: constraints.maxHeight,
-                  ),
+                  constraints: BoxConstraints(minHeight: constraints.maxHeight),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 28),
                     child: Column(
@@ -62,6 +69,7 @@ class RegisterView extends StatelessWidget {
                         _buildInput(
                           label: 'Email',
                           hint: 'user@mail.com',
+                          controller: _emailController,
                         ),
 
                         const SizedBox(height: 20),
@@ -69,6 +77,7 @@ class RegisterView extends StatelessWidget {
                         _buildInput(
                           label: 'Username',
                           hint: 'user@name10',
+                          controller: _usernameController,
                         ),
 
                         const SizedBox(height: 20),
@@ -76,6 +85,7 @@ class RegisterView extends StatelessWidget {
                         _buildInput(
                           label: 'Password',
                           hint: 'Password',
+                          controller: _passwordController,
                           isPassword: true,
                         ),
 
@@ -91,15 +101,26 @@ class RegisterView extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(26),
                               ),
                             ),
-                            onPressed: () {},
-                            child: const Text(
-                              'Create account',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white,
-                              ),
-                            ),
+                            onPressed: authVM.isLoading
+                                ? null
+                                : () {
+                                    authVM.register(
+                                      email: _emailController.text.trim(),
+                                      password: _passwordController.text.trim(),
+                                    );
+                                  },
+                            child: authVM.isLoading
+                                ? const CircularProgressIndicator(
+                                    color: Colors.white,
+                                  )
+                                : const Text(
+                                    'Create account',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white,
+                                    ),
+                                  ),
                           ),
                         ),
 
@@ -129,10 +150,11 @@ class RegisterView extends StatelessWidget {
     );
   }
 
-  // 👇 THIS METHOD FIXES YOUR ERROR
+  // Reusable input field
   Widget _buildInput({
     required String label,
     required String hint,
+    required TextEditingController controller,
     bool isPassword = false,
   }) {
     return Column(
@@ -147,6 +169,7 @@ class RegisterView extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         TextField(
+          controller: controller,
           obscureText: isPassword,
           style: const TextStyle(color: Colors.white),
           decoration: InputDecoration(

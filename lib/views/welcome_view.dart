@@ -70,7 +70,7 @@ class WelcomeView extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => const RegisterView(),
+                        builder: (_) =>  RegisterView(),
                       ),
                     );
                   },

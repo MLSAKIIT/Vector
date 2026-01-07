@@ -48,3 +48,4 @@ java {
         languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
+apply(plugin = "com.google.gms.google-services")
