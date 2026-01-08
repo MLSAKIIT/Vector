@@ -30,6 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  
+  flutter_svg: ^2.0.9
 
   # State management
   provider: ^6.1.5+1

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomBottomNav extends StatefulWidget {
   const CustomBottomNav({super.key});
@@ -11,10 +12,10 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
   int selectedIndex = 0;
 
   final icons = [
-    'assets/icons/Vector.png',
-    'assets/icons/primary.png',
-    'assets/icons/SVGRepo_iconCarrier.png',
-    'assets/icons/Page_1.png',
+    'assets/icons/Vector.svg',
+    'assets/icons/primary.svg',
+    'assets/icons/SVGRepo_iconCarrier.svg',
+    'assets/icons/Page_1.svg',
   ];
 
   @override
@@ -26,7 +27,7 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
           height: 48,
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(40), // ✅ Figma radius
+            borderRadius: BorderRadius.circular(40),
             boxShadow: [
               BoxShadow(
                 color: Colors.black,
@@ -58,11 +59,14 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
                         shape: BoxShape.circle,
                       ),
                       child: Center(
-                        child: Image.asset(
+                        child: SvgPicture.asset(
                           icons[index],
                           width: 20,
                           height: 20,
-                          color: isActive ? Colors.white : Colors.black,
+                          colorFilter: ColorFilter.mode(
+                            isActive ? Colors.white : Colors.black,
+                            BlendMode.srcIn,
+                          ),
                         ),
                       ),
                     ),

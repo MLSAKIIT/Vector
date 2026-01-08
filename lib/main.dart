@@ -8,7 +8,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:vector/view_models/home_view_model.dart';
 import 'package:vector/view_models/onboarding_view_model.dart';
 import 'package:vector/core/utils/firebase_test_util.dart';
-import 'package:vector/views/welcome.dart';
+import 'package:vector/views/welcome.dart' as views;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
 
-        home: const WelcomePage(),
+        home: views.WelcomePage(),
       ),
     );
   }
