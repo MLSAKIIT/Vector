@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../core/constants.dart';
+import 'package:vector/core/constants.dart';
 import 'gender.dart';
 
 class WelcomePage extends StatelessWidget {
