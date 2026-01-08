@@ -21,6 +21,14 @@ const int colorAccent = 0xFFEE94FE;
 const int colorTextPrimary = 0xFFF5F5F5;
 const int colorTextSecondary = 0xFFFFFFFF;
 
+// Session Page Colors
+const int colorSessionDarkPurple = 0xFF724C94;
+const int colorSessionPink = 0xFFAA4FA9;
+const int colorSessionCard = 0xFFC675AF;
+
+// Database Paths - Sessions
+const String sessionsPath = 'sessions';
+
 // Sizes
 const double paddingSmall = 8.0;
 const double paddingMedium = 16.0;
