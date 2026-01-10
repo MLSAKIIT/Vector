@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/widget_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title"
+        android:text="🏆 Weekly Progress"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/steps"
+        android:text="Steps: 2000"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:paddingTop="12dp"/>
+
+    <TextView
+        android:id="@+id/rank"
+        android:text="Rank: #12"
+        android:textColor="@android:color/white"
+        android:paddingTop="6dp"/>
+
+    <TextView
+        android:id="@+id/distance"
+        android:text="Distance: 18 km"
+        android:textColor="@android:color/white"
+        android:paddingTop="6dp"/>
+
+</LinearLayout>
