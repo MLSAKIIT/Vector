@@ -53,7 +53,7 @@ class WeeklyProgressWidget extends StatelessWidget {
                 label: 'Steps left',
                 progress: 0.55,
               ),
-              _buildRankCard(
+              _buildLeaderboardCard(
                 color: Color(0xFF7EBAE8).withOpacity(0.63),
                 rank: 12,
               ),
@@ -139,7 +139,7 @@ class WeeklyProgressWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildRankCard({
+  Widget _buildLeaderboardCard({
     required Color color,
     required int rank,
   }) {
@@ -155,13 +155,23 @@ class WeeklyProgressWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            '#$rank',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 48,
-              fontWeight: FontWeight.bold,
-            ),
+          Row(
+            children: [
+              Text(
+                '#$rank',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 48,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(width: 4),
+              Icon(
+                Icons.arrow_drop_up,
+                color: Colors.white,
+                size: 24,
+              ),
+            ],
           ),
           SizedBox(height: 8),
           Text(
@@ -171,7 +181,27 @@ class WeeklyProgressWidget extends StatelessWidget {
               fontSize: 14,
             ),
           ),
+          Spacer(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              _buildBar(0.4),
+              _buildBar(0.6),
+              _buildBar(0.8),
+            ],
+          ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildBar(double height) {
+    return Container(
+      width: 28,
+      height: 50 * height,
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.4),
+        borderRadius: BorderRadius.circular(6),
       ),
     );
   }

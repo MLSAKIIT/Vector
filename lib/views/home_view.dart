@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../widgets/weekly_progress_widget.dart';
-import 'dart:math' as math;
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeView extends StatelessWidget {
@@ -179,7 +178,7 @@ class HomeView extends StatelessWidget {
             calories.toString(),
             style: const TextStyle(
               color: Colors.white,
-              fontSize: 28,
+              fontSize: 23.5,
               fontWeight: FontWeight.bold,
             ),
           ),
