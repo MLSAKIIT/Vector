@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/home_map_widget.dart';
+import 'package:vector/Widgets/home_map_widget.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -14,7 +14,6 @@ class HomeView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               // ─── Header ─────────────────────────────────────
               const SizedBox(
                 height: 60,
