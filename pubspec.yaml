@@ -37,6 +37,7 @@ dependencies:
   # Firebase
   firebase_core: ^3.13.0
   firebase_database: ^11.3.5
+  flutter_osm_plugin: ^1.4.3
   #Charts
   fl_chart: ^0.66.0
 
