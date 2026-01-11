@@ -5,11 +5,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'view_models/home_view_model.dart';
 import 'view_models/onboarding_view_model.dart';
 import 'core/utils/firebase_test_util.dart';
+import 'core/services/home_widget_service.dart';
 import 'views/welcome.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  
+  // Initialize home widget
+  await HomeWidgetService.initialize();
 
   // Run Firebase tests in debug mode
   assert(() {

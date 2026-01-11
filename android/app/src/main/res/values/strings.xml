@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Vector</string>
+    <string name="widget_name">Streak Widget</string>
+    <string name="widget_description">Shows your current streak progress</string>
+</resources>

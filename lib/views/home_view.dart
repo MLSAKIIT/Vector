@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/weekly_progress_widget.dart';
+import '../widgets/streak.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeView extends StatelessWidget {
@@ -71,6 +72,9 @@ class HomeView extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 30),
+            // Streak Section
+            const StreakWidget(),
+            const SizedBox(height: 20),
             // You can add more content here
           ],
         ),
@@ -316,6 +320,99 @@ class HomeView extends StatelessWidget {
             size: 60,
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildStreakWidget() {
+    const int streakCount = 40;
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        color: const Color(0xFF1C1C1E),
+        borderRadius: BorderRadius.circular(24),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "$streakCount days streak!",
+                    style: GoogleFonts.poppins(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Text(
+                    "This is what consistency looks like",
+                    style: GoogleFonts.poppins(
+                      color: Colors.grey,
+                      fontSize: 12,
+                    ),
+                  ),
+                ],
+              ),
+              const Text("🔥", style: TextStyle(fontSize: 30)),
+            ],
+          ),
+          const SizedBox(height: 30),
+          Stack(
+            alignment: Alignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: Container(height: 2, color: Colors.white10),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _buildStreakNode(isFirst: true, label: "31\ndec"),
+                  _buildStreakNode(icon: Icons.directions_run, isCompleted: true),
+                  _buildStreakNode(icon: Icons.ice_skating, isCompleted: true),
+                  _buildStreakNode(icon: Icons.directions_bike, isCompleted: false),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildStreakNode({
+    String? label,
+    IconData? icon,
+    bool isFirst = false,
+    bool isCompleted = false,
+  }) {
+    return Container(
+      width: 50,
+      height: 50,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: isFirst
+            ? const Color(0xFF3D5AFE)
+            : (isCompleted ? const Color(0xFF2E7D32) : const Color(0xFF2C2C2E)),
+      ),
+      child: Center(
+        child: icon != null
+            ? Icon(icon, color: isCompleted ? Colors.white : Colors.white24, size: 20)
+            : Text(
+                label!,
+                textAlign: TextAlign.center,
+                style: GoogleFonts.poppins(
+                  color: Colors.white,
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
       ),
     );
   }
