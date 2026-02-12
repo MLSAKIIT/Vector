@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:vector/views/leader.dart';
 import 'view_models/home_view_model.dart';
-import 'views/home_view.dart'; // Import your home_view file
+import 'views/leaderboard.dart'; 
 
 void main() {
   runApp(const MyApp());
@@ -20,11 +21,10 @@ class MyApp extends StatelessWidget {
         title: 'Fitness Tracker',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          brightness: Brightness.dark, // Ensures the dark theme from your design
+          brightness: Brightness.dark, 
           useMaterial3: true,
         ),
-        // Point this to your HomePage class in home_view.dart
-        home: const StreakPage(), 
+        home:  Board(), 
       ),
     );
   }
