@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:vector/views/BottomNav.dart';
-
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -84,8 +82,6 @@ class WelcomePage extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: CustomBottomNav(),
-
     );
   }
 }

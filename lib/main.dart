@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'package:vector/shourya';
-
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:vector/view_models/home_view_model.dart';
 import 'package:vector/view_models/onboarding_view_model.dart';
 import 'package:vector/core/utils/firebase_test_util.dart';
-import 'package:vector/views/welcome.dart' as views;
+import 'package:vector/views/welcome.dart';
+import 'package:vector/views/splash_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,8 +38,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-
-        home: views.WelcomePage(),
+        home: const SplashView(),
       ),
     );
   }
