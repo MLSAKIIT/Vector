@@ -1,0 +1,87 @@
+import 'package:flutter/material.dart';
+
+class WelcomePage extends StatelessWidget {
+  const WelcomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFF0B0B0F),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Column(
+            children: [
+              const Spacer(),
+
+              
+              Image.asset(
+                'assets/Group_111.png',
+                height: MediaQuery.of(context).size.height * 0.35,
+              ),
+
+              const SizedBox(height: 32),
+
+              
+              const Text(
+                'Energize your lives with',
+                style: TextStyle(
+                  color: Color(0xFFF5F5F5),
+                  fontSize: 18,
+                ),
+              ),
+
+              const SizedBox(height: 8),
+
+              const Text(
+                'Vector!',
+                style: TextStyle(
+                  color: Color(0xFFEE94FE),
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+
+              const Spacer(),
+
+              
+              SizedBox(
+                width: double.infinity,
+                height: 52,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF693298),
+                    elevation: 6,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(26),
+                    ),
+                  ),
+                  child: const Text(
+                    'Get Started',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Color(0xFFFFFFFF),
+                    ),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 16),
+
+              const Text(
+                'Join us for a better lifestyle!',
+                style: TextStyle(
+                  color: Colors.white70,
+                  fontSize: 14,
+                ),
+              ),
+
+              const SizedBox(height: 24),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
