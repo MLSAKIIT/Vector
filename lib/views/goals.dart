@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../core/constants.dart';
 import '../view_models/onboarding_view_model.dart';
+import '../view_models/auth_view_model.dart';
 import '../models/onboarding_data_model.dart';
+import 'home_view.dart';
 
 class GoalsPage extends StatefulWidget {
   const GoalsPage({super.key});
@@ -127,21 +129,30 @@ class _GoalsPageState extends State<GoalsPage> {
                     onPressed: () async {
                       final error = vm.validateStep(5);
                       if (error == null && vm.isComplete) {
-                        // Save all onboarding data
-                        final success = await vm.save(
-                          'user_temp_id',
-                        ); // TODO: Use real user ID
-                        if (success) {
-                          if (mounted) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text(
-                                  'Onboarding completed successfully!',
-                                ),
+                        final authVM = context.read<AuthViewModel>();
+                        final userId = authVM.userId;
+
+                        if (userId == null) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Please login first')),
+                          );
+                          return;
+                        }
+
+                        final success = await vm.save(userId);
+                        if (success && mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                'Onboarding completed successfully!',
                               ),
-                            );
-                            // TODO: Navigate to home screen
-                          }
+                            ),
+                          );
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(builder: (_) => const HomeView()),
+                            (route) => false,
+                          );
                         }
                       }
                     },

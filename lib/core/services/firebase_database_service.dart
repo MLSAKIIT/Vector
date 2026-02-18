@@ -1,11 +1,13 @@
 import 'package:firebase_database/firebase_database.dart';
 import '../../models/onboarding_data_model.dart';
 import '../constants.dart';
+import 'firebase_service.dart';
 
+/// Firebase Realtime Database Service
+/// Uses the central FirebaseService instance for all database operations.
 class FirebaseDatabaseService {
-  final FirebaseDatabase _database = FirebaseDatabase.instance;
+  final FirebaseDatabase _database = FirebaseService.instance.database;
 
-  DatabaseReference get _usersRef => _database.ref(usersPath);
   DatabaseReference get _onboardingRef => _database.ref(onboardingPath);
 
   Future<void> saveOnboardingData(
