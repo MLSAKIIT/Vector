@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'view_models/home_view_model.dart';
-import 'view_models/onboarding_view_model.dart';
-import 'view_models/auth_view_model.dart';
-import 'view_models/session_view_model.dart';
-import 'view_models/profile_view_model.dart';
-import 'core/services/firebase_service.dart';
-import 'core/utils/firebase_test_util.dart';
-import 'widgets/auth_wrapper.dart';
+import 'package:vector/view_models/home_view_model.dart';
+import 'package:vector/view_models/onboarding_view_model.dart';
+import 'package:vector/core/utils/firebase_test_util.dart';
+import 'package:vector/views/welcome.dart';
+import 'package:vector/views/splash_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,7 +40,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const AuthWrapper(),
+        home: const SplashView(),
       ),
     );
   }
